@@ -65,6 +65,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .actions button:hover {
