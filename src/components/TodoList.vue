@@ -1,6 +1,8 @@
 <script setup>
 import TodoItem from './TodoItem.vue';
 import TodoStatusBar from './TodoStatusBar.vue';
+
+const props = defineProps(['allTodosLength', 'doneTodosLength']);
 </script>
 
 <template>
@@ -8,7 +10,10 @@ import TodoStatusBar from './TodoStatusBar.vue';
     <TodoItem></TodoItem>
     <TodoItem></TodoItem>
     <TodoItem></TodoItem>
-    <TodoStatusBar></TodoStatusBar>
+    <TodoStatusBar
+      :all-todos-length="allTodosLength"
+      :done-todos-length="doneTodosLength"
+    ></TodoStatusBar>
   </div>
 </template>
 

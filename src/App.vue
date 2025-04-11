@@ -4,7 +4,20 @@ import AddTodoInput from './components/AddTodoInput.vue';
 import Filters from './components/Filters.vue';
 import TodoList from './components/TodoList.vue';
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
+const todos = ref([
+  { id: 1, title: '学习Vue', isDone: false },
+  { id: 2, title: '学习React', isDone: false },
+  { id: 3, title: '学习JavaScript', isDone: true },
+]);
+
+const allTodosLength = computed(() => {
+  return todos.value.length;
+});
+const doneTodosLength = computed(() => {
+  return todos.value.filter((each) => each.isDone === true).length;
+});
 
 const allFilters = ref(['全部', '待完成', '已完成']);
 const selectedFilter = ref(0);
@@ -22,7 +35,10 @@ function handleChangeFliter(index) {
     :selected-filter="selectedFilter"
     @change-fliter="handleChangeFliter"
   ></Filters>
-  <TodoList></TodoList>
+  <TodoList
+    :all-todos-length="allTodosLength"
+    :done-todos-length="doneTodosLength"
+  ></TodoList>
 </template>
 
 <style>

@@ -1,8 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps(['allTodosLength', 'doneTodosLength']);
+</script>
 
 <template>
   <div class="status">
-    <span>共 3 项，已完成 0 项</span>
+    <span>共 {{ allTodosLength }} 项，已完成 {{ doneTodosLength }} 项</span>
   </div>
 </template>
 
