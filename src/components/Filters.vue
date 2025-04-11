@@ -1,11 +1,23 @@
-<script setup></script>
+<script setup>
+const props = defineProps(['allFilters', 'selectedFilter']);
+const emit = defineEmits(['changeFliter']);
+
+function changeFliter(index) {
+  emit('changeFliter', index);
+}
+</script>
 
 <template>
   <div class="buttons">
     <div class="filters">
-      <button class="active">全部</button>
-      <button>待完成</button>
-      <button>已完成</button>
+      <button
+        v-for="(each, index) in allFilters"
+        :key="index"
+        :class="{ active: selectedFilter === index }"
+        @click="changeFliter(index)"
+      >
+        {{ each }}
+      </button>
     </div>
     <div class="clear-done">
       <button>清除已完成</button>
